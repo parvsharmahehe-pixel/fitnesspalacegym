@@ -351,14 +351,14 @@ function TrustBar() {
   );
 }
 
-/* ---------- Birthday Offer ---------- */
+/* ---------- Independence Month Offer ---------- */
 
 // Replace with the gym's WhatsApp number (country code + number, no + or spaces)
 const WHATSAPP_NUMBER = "918130768055";
 
 type ClaimStep = "form" | "reveal";
 
-function BirthdayOffer() {
+function IndependenceOffer() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<ClaimStep>("form");
   const [name, setName] = useState("");
@@ -393,15 +393,15 @@ function BirthdayOffer() {
       alphabet[Math.floor(Math.random() * alphabet.length)],
     ).join("");
     setDiscount(amount);
-    setCouponCode(`PRINCE${suffix}`);
+    setCouponCode(`INDIA${suffix}`);
     setStep("reveal");
   };
 
   const whatsappHref = () => {
     const digits = phone.replace(/\D/g, "");
     const msg =
-      `Hi Fitness Palace Gym! 🎉%0A%0A` +
-      `I just claimed the Prince's Birthday Month.%0A` +
+      `Hi Fitness Palace Gym! 🇮🇳%0A%0A` +
+      `I just claimed the Fitness Palace Independence Month Offer.%0A` +
       `Name: ${encodeURIComponent(name.trim())}%0A` +
       `Phone: ${digits}%0A` +
       `Discount unlocked: ₹${discount}%0A` +
@@ -413,80 +413,45 @@ function BirthdayOffer() {
   return (
     <section className="relative overflow-hidden bg-background py-10 sm:py-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="reveal relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-surface to-surface-elevated p-8 sm:p-12 lg:p-16 animate-glow-pulse">
-          {/* Confetti / sparkle field */}
+        <div className="reveal relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-surface via-surface to-surface-elevated p-8 sm:p-12 lg:p-16">
+          {/* Subtle Independence Month treatment that preserves the dark gym aesthetic */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            {Array.from({ length: 28 }).map((_, i) => {
-              const size = 4 + Math.random() * 5;
-              const isSquare = Math.random() > 0.6;
-              return (
-                <span
-                  key={i}
-                  className={`absolute animate-float ${isSquare ? "rounded-sm" : "rounded-full"}`}
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    width: `${size}px`,
-                    height: isSquare ? `${size * 0.6}px` : `${size}px`,
-                    backgroundColor:
-                      Math.random() > 0.3
-                        ? "oklch(0.9 0.22 130 / 0.85)"
-                        : "oklch(0.82 0.16 80 / 0.75)",
-                    animationDelay: `${Math.random() * 4}s`,
-                    animationDuration: `${3 + Math.random() * 3}s`,
-                    transform: `rotate(${Math.random() * 360}deg)`,
-                  }}
-                />
-              );
-            })}
+            <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[#FF9933]/15 blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-[#138808]/15 blur-3xl" />
+            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-[#FF9933]/70 via-white/40 to-[#138808]/70" />
           </div>
-
-          {/* Soft radial glow behind content */}
-          <div
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-3xl"
-            style={{
-              width: "60%",
-              height: "80%",
-              background:
-                "radial-gradient(circle, oklch(0.9 0.22 130 / 0.25) 0%, transparent 70%)",
-            }}
-          />
-
-          {/* Content */}
           <div className="relative z-10 flex flex-col items-center text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary animate-twinkle">
-              <span className="text-base leading-none">🎉</span>
-              Limited Time — Prince's Birthday Month
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground">
+              <span className="text-base leading-none">🇮🇳</span>
+              Independence Month · Limited Time
             </span>
-
             <h2 className="display-section mt-6 text-4xl text-foreground sm:text-5xl md:text-6xl">
-              It's Prince's Birthday Month.
+              Stronger Together.
               <br />
-              <span className="text-primary">You Get the Gift.</span>
+              <span className="bg-gradient-to-r from-[#FF9933] via-white to-[#138808] bg-clip-text text-transparent">
+                Train for Freedom.
+              </span>
             </h2>
-
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              All month long, we're celebrating our founder Prince the only way
-              a gym should — by rewarding the people who train here. Unlock an
-              exclusive surprise discount on your membership, hand-picked for
-              our community and redeemable only at the floor. Claim it online,
-              walk in, and train like it's your birthday too.
+              This Independence Month, Fitness Palace celebrates the strength,
+              discipline and spirit that move us forward. Unlock an exclusive
+              membership discount of up to ₹499, claim it online, and make this
+              August the month you get stronger.
             </p>
-
-            <button
-              type="button"
-              onClick={resetAndOpen}
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:-translate-y-0.5 glow-primary"
-            >
-              <span className="text-base leading-none">🎁</span>
-              Avail Your Discount
+            <div className="mt-7 flex items-center gap-2" aria-hidden="true">
+              <span className="h-1 w-12 rounded-full bg-[#FF9933]" />
+              <span className="h-1 w-12 rounded-full bg-white/80" />
+              <span className="h-1 w-12 rounded-full bg-[#138808]" />
+            </div>
+            <button type="button" onClick={resetAndOpen} className="group mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-widest text-primary-foreground transition-transform hover:-translate-y-0.5 glow-primary">
+              Claim Independence Offer
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
         </div>
       </div>
 
-      <BirthdayModal
+      <IndependenceModal
         open={open}
         onOpenChange={setOpen}
         step={step}
@@ -504,7 +469,7 @@ function BirthdayOffer() {
   );
 }
 
-function BirthdayModal({
+function IndependenceModal({
   open,
   onOpenChange,
   step,
@@ -538,7 +503,7 @@ function BirthdayModal({
       className="fixed inset-0 z-[60] flex items-center justify-center p-4 animate-fade-in"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="birthday-modal-title"
+      aria-labelledby="independence-modal-title"
     >
       <button
         type="button"
@@ -569,10 +534,10 @@ function BirthdayModal({
           {step === "form" ? (
             <form onSubmit={onSubmit} noValidate>
               <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
-                <span className="leading-none">🎉</span> Birthday Month
+                <span className="leading-none">🇮🇳</span> Independence Month
               </span>
               <h3
-                id="birthday-modal-title"
+                id="independence-modal-title"
                 className="display-section mt-4 text-2xl text-foreground sm:text-3xl"
               >
                 Unlock your surprise discount
@@ -584,13 +549,13 @@ function BirthdayModal({
               <div className="mt-6 space-y-4">
                 <div>
                   <label
-                    htmlFor="birthday-name"
+                    htmlFor="independence-name"
                     className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground"
                   >
                     Full Name
                   </label>
                   <input
-                    id="birthday-name"
+                    id="independence-name"
                     type="text"
                     value={name}
                     onChange={(e) => onNameChange(e.target.value)}
@@ -607,13 +572,13 @@ function BirthdayModal({
 
                 <div>
                   <label
-                    htmlFor="birthday-phone"
+                    htmlFor="independence-phone"
                     className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground"
                   >
                     Phone Number
                   </label>
                   <input
-                    id="birthday-phone"
+                    id="independence-phone"
                     type="tel"
                     inputMode="numeric"
                     value={phone}
@@ -641,7 +606,7 @@ function BirthdayModal({
               </button>
 
               <p className="mt-4 text-center text-[11px] text-muted-foreground">
-                We'll only use your details to confirm your birthday discount.
+                We'll only use your details to confirm your Independence Month discount.
               </p>
             </form>
           ) : (
@@ -707,24 +672,24 @@ function BirthdayModal({
   );
 }
 
-/* ---------- Birthday FAQ ---------- */
+/* ---------- Independence Month FAQ ---------- */
 
-function BirthdayFAQ() {
+function IndependenceFAQ() {
   const faqs = [
     {
-      question: "Who is eligible for the birthday discount?",
+      question: "Who is eligible for the Independence Month discount?",
       answer:
-        "Anyone can claim a coupon during Prince's birthday week — new members, existing members, and visitors booking a trial. Just show your unique code at the front desk to redeem it.",
+        "Anyone can claim an Independence Month coupon — new members, existing members, and visitors booking a trial. Send your claim on WhatsApp and our team will confirm your unique code.",
     },
     {
       question: "What exactly is discounted?",
       answer:
-        "The coupon unlocks a surprise percentage off any new membership plan or upgrade. The exact discount is revealed when you claim your code, but it applies to monthly, quarterly, and annual memberships.",
+        "The offer unlocks a surprise ₹400–₹499 discount. Your exact amount is revealed when you claim and can then be confirmed by our team on WhatsApp.",
     },
     {
       question: "Can I stack it with other membership plans?",
       answer:
-        "The birthday coupon is a one-time discount applied to a single membership purchase. It cannot be combined with other active offers, referral credits, or corporate discounts.",
+        "The Independence Month coupon is a one-time discount applied to a single membership purchase. It cannot be combined with other active offers, referral credits, or corporate discounts.",
     },
     {
       question: "How long is the coupon valid?",
@@ -734,7 +699,7 @@ function BirthdayFAQ() {
     {
       question: "How do I redeem it at the gym?",
       answer:
-        "Copy your PRINCE code and show it on your phone at the front desk. Our team will verify it in the system and apply the discount before you complete your enrollment.",
+        "Send your claim through WhatsApp and keep your INDIA coupon reference handy. Our team will confirm the offer and guide you through redemption at the gym.",
     },
   ];
 
@@ -747,7 +712,7 @@ function BirthdayFAQ() {
             Got questions?
           </span>
           <h3 className="display-section mt-5 text-3xl text-foreground sm:text-4xl">
-            Birthday Offer FAQ
+            Independence Month Offer FAQ
           </h3>
           <p className="mt-3 text-sm text-muted-foreground sm:text-base">
             Everything you need to know before claiming your surprise coupon.
@@ -1690,13 +1655,17 @@ function Footer() {
               Serious training, spotless floors, real community.
             </p>
             <div className="mt-6 flex gap-2">
-              {[Instagram, Facebook, Youtube, Heart].map((I, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="grid h-10 w-10 place-items-center rounded-full border border-hairline text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                  aria-label="Social"
-                >
+              <a
+                href="https://www.instagram.com/fitnesspalacegym1/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grid h-10 w-10 place-items-center rounded-full border border-hairline text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+                aria-label="Fitness Palace Gym on Instagram"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
+              {[Facebook, Youtube, Heart].map((I, i) => (
+                <a key={i} href="#" className="grid h-10 w-10 place-items-center rounded-full border border-hairline text-muted-foreground transition-colors hover:border-primary hover:text-primary" aria-label="Social">
                   <I className="h-4 w-4" />
                 </a>
               ))}
@@ -1766,8 +1735,8 @@ function Index() {
       <main>
         <Hero />
         <TrustBar />
-        <BirthdayOffer />
-        <BirthdayFAQ />
+        <IndependenceOffer />
+        <IndependenceFAQ />
         <About />
         <Facilities />
         <Coaches />
